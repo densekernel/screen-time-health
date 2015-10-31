@@ -8,16 +8,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
-
-  devise_scope :family do
-  authenticated :family do
-    root 'static_pages#index', as: :authenticated_root
-  end
-
-  unauthenticated do
-    root 'devise/sessions#new', as: :unauthenticated_root
-  end
-end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
