@@ -82,7 +82,7 @@ GEM
       json
       multi_json
       request_store (>= 1.0.5)
-    google_visualr (2.5.1)
+    googlecharts (1.6.12)
     has_secure_token (1.0.0)
       activerecord (>= 3.0)
     i18n (0.7.0)
@@ -194,7 +194,7 @@ DEPENDENCIES
   devise
   erd
   gon
-  google_visualr (~> 2.5.1)
+  googlecharts
   has_secure_token
   jbuilder (~> 2.0)
   jquery-rails
