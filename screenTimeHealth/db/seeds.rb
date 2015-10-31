@@ -49,6 +49,6 @@ end
   endEndIndex = (n * 24) + 2
   startTime = rand_time(startIndex.hours.ago, endIndex.hours.ago)
   endTime = rand_time(endIndex.hours.ago, endEndIndex.hours.ago)
-  familyMember = rand_int(1, 4)
+  familyMember = rand_int(1, 5)
   Session.create(:startTime => startTime, :endTime => endTime, :kid_id => familyMember)
 end

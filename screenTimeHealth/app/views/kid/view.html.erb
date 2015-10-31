@@ -5,7 +5,7 @@
 <section>
   <h2>Sessions</h2>
   <% for @session in @kid.session %>
-    <p><%= @session.startTime %></p>
-    <p><%= @session.endTime %></p>
+    <p>Start: <%= @session.startTime %></p>
+    <p>End : <%= @session.endTime %></p>
   <% end %>
 </section>

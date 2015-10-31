@@ -2,14 +2,12 @@ class FamilyController < ApplicationController
 
   def view
     @family = current_family
-    @kids = current_family.kid
+    @kids = current_family.kids
   end
 
   def edit
     @family = current_family
     @family_name = @family.surname
-    @kid = @family.kids.build
-
   end
 
   # def update
