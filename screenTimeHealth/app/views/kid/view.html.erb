@@ -1,4 +1,11 @@
 <section>
-  First name
-  Last name
+  <h1><%= @kid.name %></h1>
+  <p><%= @kid.unique_token %></p>
+</section>
+<section>
+  <h2>Sessions</h2>
+  <% for @session in @kid.session %>
+    <p><%= @session.startTime %></p>
+    <p><%= @session.endTime %></p>
+  <% end %>
 </section>
