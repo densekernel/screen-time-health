@@ -17,4 +17,5 @@
 //= require 'jquery.backstretch'
 //= require jquery
 //= require bootstrap-material-design
+//= require jquery_nested_form
 //= require_tree .
