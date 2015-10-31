@@ -8,4 +8,9 @@ class AnalyticsController < ApplicationController
     @kid = Kid.find_by(:unique_token => params[:unique_token].to_s)
     @session = @kid.session.last.update(:endTime => Time.now)
   end
+
+  def track
+    @kid = Kid.find_by(:unique_token => params[:unique_token].to_s)
+    gon.kid = @kid
+  end
 end

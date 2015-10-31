@@ -3,8 +3,9 @@ class Family < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   
-  has_many :kid
-  accepts_nested_attributes_for :kid, :allow_destroy => true
+  has_many :kids
+  accepts_nested_attributes_for :kids, :allow_destroy => true
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

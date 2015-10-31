@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'family/edit'
 
-  post 'family/create_kid'
+  patch 'family/create_kid'
 
   get 'kid/view'
 

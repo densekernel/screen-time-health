@@ -5,16 +5,20 @@
 <div class="row">
 
     <%= nested_form_for @family, :url => family_create_kid_path do |f| %>
-        <%= f.hidden_field :fid, value: @family.id %>
         <fieldset>
-          <%= f.fields_for :kid do |kid_form| %>
+          <%= f.fields_for :kids do |kid_form| %>
           <%= kid_form.text_field :name %>
-          <%= kid_form.link_to_remove "Remove this kid" %>
+          <%= kid_form.link_to_remove "Remove kid" %>
           <% end %>
-        <p><%= f.link_to_add "Add Family Member", :kid, :class => 'btn btn-default btn-lg btn-block' %></p>
+        <%= f.link_to_add "Add Family Member", :kids, :class => 'btn btn-primary btn-sm btn-block' %>
     </fieldset>
-    <% end %> 
 
+      <div class="row text-center">
+        <div class="legal-document-actions">
+              <%= f.submit "Save changes", :class => "btn btn-lg btn-primary" %>
+          </div>
+        <% end %>
+      </div>
 </div>
 
 <div class="row">
