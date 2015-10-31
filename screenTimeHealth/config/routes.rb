@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
   patch 'family/create_kid'
 
+  get 'kid/view'
+
+  get 'analytics/start'
+
+  get 'analytics/end'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
