@@ -1,0 +1,8 @@
+<p>Hello <%= @family_name %></p>
+
+    <%= nested_form_for @family, :url => family_create_kid_path do |f| %>
+        <%= f.hidden_field :fid, value: @family.id %>
+        <fieldset>
+          <%= f.fields_for :kid %>
+          <%= f.link_to_add "Add Family Member", :kid, :class => 'btn btn-default btn-lg btn-block'%>
+        </fieldset>
