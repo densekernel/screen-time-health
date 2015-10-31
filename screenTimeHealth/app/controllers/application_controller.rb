@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  # Update page to redirect to after successful sign in
+  def after_sign_in_path_for(resource)
+    family_view_path
+  end
+
+
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:surname, :email, :password)}
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :email, :password, :remember_me) }
