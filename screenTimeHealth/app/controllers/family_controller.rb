@@ -3,6 +3,7 @@ class FamilyController < ApplicationController
   def view
     @family = current_family
     @kids = current_family.kids
+
   end
 
   def edit
