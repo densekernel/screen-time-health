@@ -6,19 +6,19 @@ var loadFunc = function() {
       $(window).load(function() {
         console.log(gon.kid.unique_token + 'onload');
         $.ajax({
-          url: url,
-          data: data,
-          success: success,
-          dataType: dataType
+          url: '/analytics/start?unique_token='+gon.kid.unique_token
+          // data: data,
+          // success: success,
+          // dataType: dataType
         });
       });
       $(window).on('beforeunload', function() {
         alert(gon.kid.unique_token + 'beforeunload');
         $.ajax({
-          url: url,
-          data: data,
-          success: success,
-          dataType: dataType
+          url: '/analytics/end?unique_token='+gon.kid.unique_token
+          // data: data,
+          // success: success,
+          // dataType: dataType
         });
       })
     }
