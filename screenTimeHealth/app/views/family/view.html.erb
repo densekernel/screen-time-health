@@ -1,0 +1,11 @@
+<div class="container">
+	<ul>
+		<% @kids.each do |kid| %>
+		<li> 
+			<a href="/kid/view?id=<%= kid.id %>" type="button" class="btn btn-default"> 
+				<%= kid.name%>
+			</a>
+		</li>
+		<% end %>
+	</ul>
+</div>
