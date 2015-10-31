@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031152818) do
+ActiveRecord::Schema.define(version: 20151031174203) do
 
   create_table "families", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +30,22 @@ ActiveRecord::Schema.define(version: 20151031152818) do
 
   add_index "families", ["email"], name: "index_families_on_email", unique: true
   add_index "families", ["reset_password_token"], name: "index_families_on_reset_password_token", unique: true
+
+  create_table "kids", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unique_token"
+    t.integer  "family_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "kids", ["family_id"], name: "index_kids_on_family_id"
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "startTime"
+    t.datetime "endTime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
