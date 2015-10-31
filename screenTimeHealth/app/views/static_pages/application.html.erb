@@ -1,0 +1,25 @@
+<html>
+ <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>ScreenTimeHealth</title>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= csrf_meta_tags %>
+ </head>
+ <body class="<%= controller_name %> <%= action_name %>">
+   <%= render 'layouts/navbar' %>
+   <div class="container">
+     <% if notice %>
+       <div class="alert alert-info"><%= notice %></div>
+     <% end %>
+     <% if alert %>
+       <div class="alert alert-warning"><%= alert %></div>
+     <% end %>
+   </div>
+   <div class="container">
+     <%= yield %>
+   </div>
+   <%= include_gon %>
+ </body>
+</html>
