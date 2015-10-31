@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'family/view'
 
+  get 'family/edit'
+
   post 'family/create_kid'
 
   # Example of regular route:

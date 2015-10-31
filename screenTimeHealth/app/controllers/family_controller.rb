@@ -1,18 +1,13 @@
 class FamilyController < ApplicationController
 
-def view
+  def view
+    @family = current_family
+  end
 
-  @family = current_family
-  @family_name = @family.surname
-
-
-
-end
-
-
-def create_kid
-    
-end
+  def edit
+    @family = current_family
+    @family_name = @family.surname
+  end
 
 end
 
