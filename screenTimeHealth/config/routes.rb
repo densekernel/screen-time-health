@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'family/view'
 
+  post 'family/create_kid'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

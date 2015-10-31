@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
     family_view_path
   end
 
+  def after_sign_out_path_for(resource)
+   root_path
+  end
 
+ protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:surname, :email, :password)}
