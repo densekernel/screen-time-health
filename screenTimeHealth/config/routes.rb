@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   get 'kid/view'
 
+  get 'analytics/start'
+
+  get 'analytics/end'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
