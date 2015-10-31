@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :surname)}
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:surname, :email, :password)}
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :surname) }
     # devise_parameter_sanitizer.for(avatar_upload_complete_url) { |u| u.permit(:email, :password, :password_confirmation, :is_over_legal_age, :firstname, :lastname, :telephone, :current_password, :avatar, :avatar_cache) }
