@@ -2,7 +2,7 @@ class Family < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
-  has_many :kids
+  has_many :kid
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

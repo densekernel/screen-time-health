@@ -40,12 +40,15 @@ kid_list = [
 ]
 
 kid_list.each do |kid|
-  Kid.create( :name => kid[0], :family_id => 1 )
+  Kid.create( :name => kid[0], :family_id => 1)
 end
 
-[0..100].each do |i|
-  startTime = rand_time(i.days.ago + 8.hours.ago, Time.now)
-  endTime = rand_time(i.days.ago + 7.hours.ago, Time.now)
+(1..100).each do |n|
+  startIndex = (n * 24) + 8
+  endIndex = (n * 24) + 7
+  endEndIndex = (n * 24) + 2
+  startTime = rand_time(startIndex.hours.ago, endIndex.hours.ago)
+  endTime = rand_time(endIndex.hours.ago, endEndIndex.hours.ago)
   familyMember = rand_int(0, 3)
   Session.create(:startTime => startTime, :endTime => endTime, :kid_id => familyMember)
 end
