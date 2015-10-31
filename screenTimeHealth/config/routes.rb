@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get 'analytics/end'
 
+  get 'analytics/track'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

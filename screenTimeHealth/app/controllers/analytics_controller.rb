@@ -10,7 +10,7 @@ class AnalyticsController < ApplicationController
   end
 
   def track
-    @kid = Kid.find_by(:unique_token => params[:unique_token].to_s)
+    @kid = Kid.find_by(:id => params[:id].to_s)
     gon.kid = @kid
   end
 end
