@@ -1,27 +1,28 @@
 <div class="container">
 	<div class="row">
-		<h2><%= @family.surname %> </h2>
+		<h2><%= @family.surname %></h2>
 	</div>
-	<div class="kids_container">
-	<h3> <%=pluralize(@kids.count, "Kids")%>: </h3>
-	<ul list-style-type: none>
-		<% @kids.each do |kid| %>
-		<li> 
-			<a href="/kid/view?id=<%= kid.id %>" type="button"> 
-				
-			<div class="panel">
-    			<div class="panel-heading">
-        			<h3 class="panel-title"><%= kid.name%></h3>
-    			</div>
-    			<div class="panel-body">
-        			<div id="piechart" style="width: 900px; height: 500px;"></div>
-        			
-    			</div>
-			</div>
-
-			</a>
-		</li>
-		<% end %>
-	</ul>
-	</div>
+  <div class="row">
+    <%= link_to 'Add', family_add_path, :class => 'btn btn-primary btn-lg' %>
+  </div>
+  <div class="row">
+    <h3> Number of kids: <%= @kids.count %> </h3>
+  </div>
+  <div class="row">
+    <% @kids.each do |kid| %>
+      <div class="col-md-4">
+        <a href="/kid/view?id=<%= kid.id %>" type="button"> 
+          <div class="panel">
+              <div class="panel-heading">
+                  <h3 class="panel-title"><%= kid.name%></h3>
+              </div>
+              <div class="panel-body">
+                  <div id="piechart" style="width: 900px; height: 500px;"></div>
+              </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+  
 </div>

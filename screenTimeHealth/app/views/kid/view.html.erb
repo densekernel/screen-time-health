@@ -1,9 +1,17 @@
-<section>
-  <h1><%= @kid.name %></h1>
-  <p><%= @kid.unique_token %></p>
-</section>
-<section>
+<div class="row">
+    <h1><%= @kid.name %></h1>
+</div>
+<div class="row">
+  <a class="btn btn-lg btn-primary" target="_blank" href="/analytics/track?id=<%= @kid.id %>">Track</a>
+  <a class="btn btn-lg btn-danger" href="/kid/delete?id=<%= @kid.id %>">Remove</a>
+</div>
+<div class="row">
   <h2>Sessions</h2>
+</div>
+<div class="row">
+  <h3>Number of sessions: <%= @kid.session.count %></h3>
+</div>
+<section>
   <% for @session in @kid.session %>
     <p>Start: <%= @session.startTime %></p>
     <p>End : <%= @session.endTime %></p>

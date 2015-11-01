@@ -1,8 +1,6 @@
 var loadFunc = function() {
 
-    console.log("yo");
     if ($("body").hasClass("analytics track")) {
-      console.log("boo");
       $(window).load(function() {
         console.log(gon.kid.unique_token + 'onload');
         $.ajax({
@@ -22,6 +20,8 @@ var loadFunc = function() {
         });
       })
     }
+
+    $(".rotate-loading-icon-wrapper").css('padding-top', (($(window).height()-156)/2)+'px');
   
 };
 
