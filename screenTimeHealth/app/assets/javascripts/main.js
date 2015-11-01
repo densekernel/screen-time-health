@@ -233,12 +233,16 @@ var loadFunc = function() {
     
     console.log(session_chartData)
 
-      });
-
-    Vis.drawHeavy();
-    Vis.drawModerate();
-    Vis.drawLight();
-
+      if(gon.avg < 2){
+          Vis.drawLight();    
+        }
+        else if(gon.avg >= 2 && gon.avg < 4){
+          Vis.drawModerate();
+        }
+        else{
+          Vis.drawHeavy();
+        }
+    });
     };
     
 };

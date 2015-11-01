@@ -69,8 +69,10 @@ class KidController < ApplicationController
       end
     end
 
+    @avg_hours = ((period_data.inject { |sum, e| sum + e }.to_f / period_data.size) / 60).round(2)
 
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+
+    @sessionchart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => "Session Data for " + @kid.name)
       f.xAxis(:categories => period_keys)
       f.series(:name => "hours", :yAxis => 0, :data => period_data.collect{|d| (d / 60).round(2) })
@@ -83,13 +85,51 @@ class KidController < ApplicationController
       f.chart({:defaultSeriesType=>"column"})
     end
 
-    end
     
+    
+
+require 'json'
+  file = File.read('app/assets/jsons/obese_percentages.json')
+  @data_hash = JSON.parse(file)
+
+  @chart = []
+  for each_data_hash in @data_hash
+    data_hash_name = each_data_hash[0]
+    data_hash_data = each_data_hash[1]
+    newchart = LazyHighCharts::HighChart.new('pie') do |f|
+        f.chart({:defaultSeriesType=>"pie" , :margin=> [0, 0, 0, 0]} )
+        series = {
+               :type=> 'pie',
+               :name=> '%people',
+               :data=> [
+                  [data_hash_data.keys[0],   data_hash_data.values[0]],
+                  [data_hash_data.keys[1],   data_hash_data.values[1]],
+                  [data_hash_data.keys[2],   data_hash_data.values[2]]
+               ]
+        }
+        f.series(series)
+        f.options[:title][:text] = data_hash_name
+        f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> '5px',:top=> '10px'}) 
+        f.plot_options(:pie=>{
+          :allowPointSelect=>true, 
+          :cursor=>"pointer" , 
+          :dataLabels=>{
+              :enabled=>true,
+              :color=>"black",
+              :style=>{
+                :font=>"13px Trebuchet MS, Verdana, sans-serif"
+                }
+            }
+          })
+      end
+      @chart.append(newchart)
+    end
+
 
     puts @session_data
     gon.session = @session_data
-
-
+    gon.avg = @avg_hours
+    end
 
   end
 

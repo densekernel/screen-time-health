@@ -8,25 +8,27 @@
   <a class="btn btn-lg btn-primary" target="_blank" href="/analytics/track?id=<%= @kid.id %>">Track</a>
   <a class="btn btn-lg btn-danger" href="/kid/delete?id=<%= @kid.id %>">Remove Member</a>
 </div>
+<div class="row">
+  <div class="col-md-12">
     
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Threshold in mins</th>
-        <th>Threshold in hours : mins</th>
-        <th>Total nb of sessions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @kid.name %></td>
-        <td><%= @kid.threshold %></td>
-        <td><%= @kid.threshold / 60 %> h : <%= @kid.threshold % 60 %> min</td>
-        <td><%= @kid.session.count %></td>
-      </tr>
-    </tbody>
-  </table>
+      <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Threshold in hours : mins</th>
+          <th>Total nb of sessions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @kid.name %></td>
+          <td><%= @kid.threshold / 60 %> h : <%= @kid.threshold % 60 %> min</td>
+          <td><%= @kid.session.count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+    
 </div>
 
 
@@ -38,11 +40,12 @@
     <br>
 
     <div class="col-md-12">
-           <div class="panel">
+           <div class="panel panel-default">
+              <div class="panel-heading">Session tracking</div>
               <div class="panel-body">
                 <div class="text-center">
                   <% if @kid.session.count != 0 %>
-    <%= high_chart("session_chart", @chart) %>
+    <%= high_chart("session_chart", @sessionchart) %>
     
     <% end %>         
               </div>
@@ -52,44 +55,122 @@
   </div>
 </div>
 
+
+<% if @avg_hours < 2 %>
+
     <div class="row">
-    <div class="col-md-12">
-           <div class="panel">
+
+        <h1>Category "Heavy Screen User"</h1>
+        <h4><%= @kid.name %> spends more than 4 hours in front of the screen<h4>
+
+        <br>
+    <div class="col-md-6">
+           <div class="panel panel-success">
+                <div class="panel-heading">
+          <h5>Direct correlation between category and social factors</h5>
+        </div>
               <div class="panel-body">
                 <div class="text-center">
-                  <canvas id="heavy" height="300px">           
+                  <canvas id="heavy" height="400px">           
               </div>
           </div>
       
     </div>
   </div>
+
+      <div class="col-md-6">
+      <div class="panel panel-success">
+         <div class="panel-heading">
+          <h5>Direct correlation between category and social factors</h5>
+        </div>
+        <div class="panel-heading">
+          <h5>Obesity distribution for the "Heavy Screen User"</h5>
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart4", @chart[3]) %>
+        </div>
+      </div>
+    </div>
+
+
 </div>
 
+<% elsif @avg_hours >= 2 && @avg_hours < 4 %>
    <div class="row">
-    <div class="col-md-12">
-           <div class="panel">
+
+<h1>Category "Moderate Screen User"</h1>
+        <h4><%= @kid.name %> spends between 2 and 4 hours in front of the screen<h4>
+        <br>
+
+    <div class="col-md-6">
+
+           <div class="panel panel-warning">
+             <div class="panel-heading">
+          <h5>Direct correlation between category and social factors</h5>
+        </div>
               <div class="panel-body">
                 <div class="text-center">
-                  <canvas id="moderate" height="300px">           
+                  <canvas id="moderate" height="400px">           
               </div>
           </div>
       
     </div>
   </div>
+
+   <div class="col-md-6">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h5>Obesity distribution for the "Moderate Screen User"</h5>
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart3", @chart[2]) %>
+        </div>
+      </div>
+    </div>
+
+
+
 </div>
+<% else %>
 
    <div class="row">
-    <div class="col-md-12">
-           <div class="panel">
+    <h1>Category "Light Screen User"</h1>
+        <h4>
+      <%= @kid.name %> spends less than 1 hour in front of the screen
+    </h4>
+    <br>
+    <div class="col-md-6">
+      <div class="panel-heading">
+          <h5>Direct correlation between category and social factors</h5>
+        </div>
+           <div class="panel panel-danger">
               <div class="panel-body">
                 <div class="text-center">
-                  <canvas id="light" height="300px">           
+                  <canvas id="light" height="400px">           
               </div>
           </div>
       
     </div>
   </div>
+
+     <div class="col-md-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h5>Obesity distribution for the "Light Screen User"</h5>
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart2", @chart[1]) %>
+        </div>
+      </div>
+    </div>
+
+
 </div>
+
+
+<% end %>
+
+
 
 
 </div>
