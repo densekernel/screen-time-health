@@ -6,13 +6,13 @@ class FamilyController < ApplicationController
     @last_kid_session = {}
 
     @kids.each do |k|
-      sessions = k.session.where("DATE(created_at) = ?", Date.today)
+      sessions = k.session.where("DATE(startTime) = ?", Date.today)
       total = 0
       sessions.each do |s|
-        total += (s.endTime - s.startTime) / 60
+        total += ((s.endTime - s.startTime) / 60)
       end
 
-      @last_kid_session[k.id] = total
+      @last_kid_session[k.id] = total.to_i
       
     end
 

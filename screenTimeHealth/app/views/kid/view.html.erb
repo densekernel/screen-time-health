@@ -15,7 +15,7 @@
       <tr>
         <td><%= @kid.name %></td>
         <td><%= @kid.threshold %></td>
-        <td><%= @kid.threshold / 60 %> : <%= @kid.threshold %60 %></td>
+        <td><%= @kid.threshold / 60 %> : <%= @kid.threshold % 60 %></td>
       </tr>
     </tbody>
   </table>
