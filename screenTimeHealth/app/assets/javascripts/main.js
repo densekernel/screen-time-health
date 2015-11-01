@@ -36,6 +36,8 @@ var loadFunc = function() {
 
     $(".rotate-loading-icon-wrapper").css('padding-top', (($(window).height()-156)/2)+'px');
 
+    $(".dial").knob();
+
     if ($("body").hasClass("kid view")) {
       $(window).load(function() {
 
