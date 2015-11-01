@@ -70,9 +70,6 @@ class KidController < ApplicationController
       end
     end
 
-    puts 'period data'
-    puts period_keys
-    puts period_data
 
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => "Session Data for " + @kid.name)
@@ -86,6 +83,7 @@ class KidController < ApplicationController
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
       f.chart({:defaultSeriesType=>"column"})
     end
+
     end
     
 

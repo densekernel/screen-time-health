@@ -35,8 +35,52 @@
       Session Time Data for <%= @kid.name %>
     </h1>
     <br>
+    <% if false %>
     <% if @kid.session.count != 0 %>
     <%= high_chart("session_chart", @chart) %>
     <% end %>
+    <% end %>
+
   </div>
+
+    <div class="row">
+    <div class="col-md-12">
+           <div class="panel">
+              <div class="panel-body">
+                <div class="text-center">
+                  <canvas id="heavy" height="300px">           
+              </div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+   <div class="row">
+    <div class="col-md-12">
+           <div class="panel">
+              <div class="panel-body">
+                <div class="text-center">
+                  <canvas id="moderate" height="300px">           
+              </div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+   <div class="row">
+    <div class="col-md-12">
+           <div class="panel">
+              <div class="panel-body">
+                <div class="text-center">
+                  <canvas id="light" height="300px">           
+              </div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
 </div>

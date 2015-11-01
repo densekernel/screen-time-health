@@ -53,6 +53,8 @@ GEM
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
+    chart-js-rails (0.0.9)
+      railties (> 3.1)
     choice (0.2.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -105,6 +107,8 @@ GEM
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.2)
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
     multi_json (1.11.1)
     nested_form (0.3.2)
     nokogiri (1.6.6.2)
@@ -193,6 +197,7 @@ DEPENDENCIES
   bootstrap-material-design
   bootstrap-sass
   byebug
+  chart-js-rails
   coffee-rails (~> 4.1.0)
   devise
   erd
@@ -202,6 +207,7 @@ DEPENDENCIES
   jquery-rails
   lazy_high_charts
   material_icons
+  momentjs-rails
   nested_form
   rails (= 4.2.1)
   sass-rails (~> 5.0)
