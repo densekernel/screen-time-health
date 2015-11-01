@@ -52,7 +52,14 @@
   </div>
 </div>
 
+
+<% if @avg_hours <= 1 %>
+
     <div class="row">
+
+        <h1>Category "Heavy Screen User"</h1>
+        <h4><%= @kid.name %> spends more than 4 hours in front of the screen<h4>
+        <br>
     <div class="col-md-12">
            <div class="panel">
               <div class="panel-body">
@@ -65,7 +72,13 @@
   </div>
 </div>
 
+<% elsif @avg_hours > 1 && @avg_hours < 4 %>
    <div class="row">
+
+<h1>Category "Moderate Screen User"</h1>
+        <h4><%= @kid.name %> spends between 2 and 4 hours in front of the screen<h4>
+        <br>
+
     <div class="col-md-12">
            <div class="panel">
               <div class="panel-body">
@@ -77,8 +90,14 @@
     </div>
   </div>
 </div>
+<% else %>
 
    <div class="row">
+    <h1>Category "Light Screen User"</h1>
+        <h4>
+      <%= @kid.name %> spends less than 1 hour in front of the screen
+    </h4>
+    <br>
     <div class="col-md-12">
            <div class="panel">
               <div class="panel-body">
@@ -90,6 +109,11 @@
     </div>
   </div>
 </div>
+
+
+<% end %>
+
+
 
 
 </div>

@@ -69,6 +69,8 @@ class KidController < ApplicationController
       end
     end
 
+    @avg_hours = ((period_data.inject { |sum, e| sum + e }.to_f / period_data.size) / 60).round(2)
+
 
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => "Session Data for " + @kid.name)
@@ -88,8 +90,7 @@ class KidController < ApplicationController
 
     puts @session_data
     gon.session = @session_data
-
-
+    gon.avg = @avg_hours
 
   end
 
