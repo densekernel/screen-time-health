@@ -2,16 +2,18 @@ class KidController < ApplicationController
   def view
     @kid = Kid.find(params[:id])
     
-    @session_data = {}
+    if(@kid.session.length != 0)
+      @session_data = {}
 
     current_date = @kid.session.first.startTime.strftime("%d-%m-%Y")
     key = current_date 
     # key = @kid.session.first.startTime.strftime("%A") + " " + @kid.session.first.startTime.strftime("%A")
     session_arr = []
 
+
+
     @kid.session.each do |session|
    
-
       if(session.startTime.strftime("%d-%m-%Y") != current_date)
         @session_data[key] = session_arr
 
@@ -38,6 +40,8 @@ class KidController < ApplicationController
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
       f.chart({:defaultSeriesType=>"column"})
     end
+    end
+    
 
     puts @session_data
     gon.session = @session_data
@@ -50,7 +54,7 @@ class KidController < ApplicationController
 
   def create
     @family = current_family
-    if Kid.create(:name => params[:name], :family_id => @family.id)
+    if Kid.create(:name => params[:name], :threshold => params[:threshold], :family_id => @family.id)
       flash[:notice] = "Family member successfully added."
       redirect_to :controller => 'family', :action => 'view'
     else
