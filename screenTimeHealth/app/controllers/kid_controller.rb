@@ -4,18 +4,20 @@ class KidController < ApplicationController
     
     @session_data = {}
 
-    current_date = @kid.session.first.startTime.strftime("%d%m%Y")
-    key = current_date + " " + @kid.session.first.startTime.strftime("%A")
+    current_date = @kid.session.first.startTime.strftime("%d-%m-%Y")
+    key = current_date 
+    # key = @kid.session.first.startTime.strftime("%A") + " " + @kid.session.first.startTime.strftime("%A")
     session_arr = []
 
     @kid.session.each do |session|
    
 
-      if(session.startTime.strftime("%d%m%Y") != current_date)
+      if(session.startTime.strftime("%d-%m-%Y") != current_date)
         @session_data[key] = session_arr
 
-        current_date = session.startTime.strftime("%d%m%Y")
-        key = current_date + " " + session.startTime.strftime("%A")
+        current_date = session.startTime.strftime("%d-%m-%Y")
+        # key = current_date + " " + session.startTime.strftime("%A")
+        key = current_date 
       else
         startTime = session.startTime
         endTime = session.endTime
@@ -25,14 +27,12 @@ class KidController < ApplicationController
     end
 
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(:text => "Population vs GDP For 5 Big Countries [2009]")
-      f.xAxis(:categories => ["United States", "Japan", "China", "Germany", "France"])
-      f.series(:name => "GDP in Billions", :yAxis => 0, :data => [14119, 5068, 4985, 3339, 2656])
-      f.series(:name => "Population in Millions", :yAxis => 1, :data => [310, 127, 1340, 81, 65])
+      f.title(:text => "Session Data for " + @kid.name)
+      f.xAxis(:categories => @session_data.keys)
+      f.series(:name => "minutes", :yAxis => 0, :data => @session_data.values)
 
       f.yAxis [
-        {:title => {:text => "GDP in Billions", :margin => 70} },
-        {:title => {:text => "Population in Millions"}, :opposite => true},
+        {:title => {:text => "Sesstion Time in Minutes", :margin => 70} },
       ]
 
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
