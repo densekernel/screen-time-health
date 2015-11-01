@@ -9,7 +9,7 @@
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= include_gon %>
+    
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'layouts/navbar' %>
@@ -24,6 +24,6 @@
     <div class="container">
       <%= yield %>
     </div>
-    
+    <%= include_gon %>
   </body>
 </html>

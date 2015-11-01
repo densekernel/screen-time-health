@@ -1,0 +1,11 @@
+<div class="row">
+<h1>Add family member</h1>
+</div>
+<section>
+  <%= form_tag({controller: "kid", action: "create"}, :id => "", :class => "form-horizonal") do %>
+    <%= label_tag :name, 'Name', :class => "control-label" %>
+    <%= text_field_tag :name, '',:class => "form-control" %>
+    <%= submit_tag "Add", :class => "btn btn-lg btn-primary" %>
+  <% end %>
+  
+</section>

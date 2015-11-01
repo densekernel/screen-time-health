@@ -16,15 +16,25 @@ Rails.application.routes.draw do
 
   get 'family/edit'
 
+  get 'family/add'
+
   patch 'family/create_kid'
 
   get 'kid/view'
+
+  get 'kid/add'
+
+  post 'kid/create'
+
+  get 'kid/delete'
 
   get 'analytics/start'
 
   get 'analytics/end'
 
   get 'analytics/track'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
