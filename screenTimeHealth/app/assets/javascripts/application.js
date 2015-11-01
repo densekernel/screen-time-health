@@ -19,3 +19,7 @@
 //= require bootstrap-material-design
 //= require jquery_nested_form
 //= require_tree .
+
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock
