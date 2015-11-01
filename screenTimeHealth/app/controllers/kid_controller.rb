@@ -20,12 +20,16 @@ class KidController < ApplicationController
 
       startTime = session.startTime
       endTime = session.endTime
+      if session.endTime.nil?
+        endTime = Time.now
+      end
    
       if index == 0
 
         period_keys.push(startTime.strftime("%d-%m-%Y"))
+      
         total += (endTime - startTime) / 60
-        prevEndTime = session.endTime
+        prevEndTime = session.endTime.nil? ? Time.now : session.endTime
 
       else
 
@@ -61,7 +65,7 @@ class KidController < ApplicationController
         session_arr = []
       else
         startTime = session.startTime
-        endTime = session.endTime
+        endTime = session.endTime.nil? ? Time.now : session.endTime
         session_duration_mins = (endTime - startTime) / 60
         session_arr.push(session_duration_mins)
         puts 'hereeee'
@@ -129,8 +133,8 @@ require 'json'
     puts @session_data
     gon.session = @session_data
     gon.avg = @avg_hours
-    end
 
+       end
   end
 
   def add

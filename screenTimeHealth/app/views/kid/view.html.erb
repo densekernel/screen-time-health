@@ -39,14 +39,17 @@
     </h1>
     <br>
 
+<% if @kid.session.count != 0 %>
     <div class="col-md-12">
            <div class="panel panel-default">
               <div class="panel-heading">Session tracking</div>
               <div class="panel-body">
                 <div class="text-center">
-                  <% if @kid.session.count != 0 %>
+                  
     <%= high_chart("session_chart", @sessionchart) %>
     
+    <% else %>
+    <p>Unfortunately there is no session data for this user. </p>
     <% end %>         
               </div>
           </div>
@@ -55,7 +58,7 @@
   </div>
 </div>
 
-
+<% if @kid.session.count != 0 %>
 <% if @avg_hours < 2 %>
 
     <div class="row">
@@ -65,7 +68,7 @@
 
         <br>
     <div class="col-md-6">
-           <div class="panel panel-success">
+           <div class="panel panel-danger">
                 <div class="panel-heading">
           <h5>Direct correlation between category and social factors</h5>
         </div>
@@ -79,7 +82,7 @@
   </div>
 
       <div class="col-md-6">
-      <div class="panel panel-success">
+      <div class="panel panel-danger">
          <div class="panel-heading">
           <h5>Direct correlation between category and social factors</h5>
         </div>
@@ -140,10 +143,11 @@
     </h4>
     <br>
     <div class="col-md-6">
-      <div class="panel-heading">
-          <h5>Direct correlation between category and social factors</h5>
-        </div>
-           <div class="panel panel-danger">
+     
+           <div class="panel panel-success">
+             <div class="panel-heading">
+              <h5>Direct correlation between category and social factors</h5>
+            </div>
               <div class="panel-body">
                 <div class="text-center">
                   <canvas id="light" height="400px">           
@@ -154,7 +158,7 @@
   </div>
 
      <div class="col-md-6">
-      <div class="panel panel-danger">
+      <div class="panel panel-success">
         <div class="panel-heading">
           <h5>Obesity distribution for the "Light Screen User"</h5>
         </div>
@@ -169,6 +173,8 @@
 
 
 <% end %>
+<% end %>
+
 
 
 

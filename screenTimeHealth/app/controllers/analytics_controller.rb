@@ -7,6 +7,21 @@ class AnalyticsController < ApplicationController
   def end
     @kid = Kid.find_by(:unique_token => params[:unique_token].to_s)
     @session = @kid.session.last.update(:endTime => Time.now)
+    startTime = @kid.session.startTime
+    difference = (endTime - startTime) / 60
+
+    puts 'difference'
+    puts difference
+
+    threshold = @kid.threshold
+    @family = @kid.family
+
+    NotificationMailer.send_alert(@family, @kid).deliver_now
+
+    # if(threshold < difference)
+    #   puts 'in case'
+    #   NotificationMailer.send_alert(@family, @kid).deliver_now
+    # end
   end
 
   def track
