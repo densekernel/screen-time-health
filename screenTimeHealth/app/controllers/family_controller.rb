@@ -9,7 +9,7 @@ class FamilyController < ApplicationController
       sessions = k.session.where("DATE(created_at) = ?", Date.today)
       total = 0
       sessions.each do |s|
-        total += s.endTime - s.startTime
+        total += (s.endTime - s.startTime) / 60
       end
 
       @last_kid_session[k.id] = total
