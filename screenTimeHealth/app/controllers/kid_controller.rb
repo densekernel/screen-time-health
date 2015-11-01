@@ -23,14 +23,13 @@ class KidController < ApplicationController
    
       if index == 0
 
-        period_keys.push(startTime.to_time)
+        period_keys.push(startTime.strftime("%d-%m-%Y"))
         total += (endTime - startTime) / 60
         prevEndTime = session.endTime
 
       else
 
         # save period
-
         puts 'diff'
         puts startTime
         puts prevEndTime
@@ -40,7 +39,7 @@ class KidController < ApplicationController
           puts 'new stamp'
           period_data.push(total)
           
-          period_keys.push(startTime.to_time)
+          period_keys.push(startTime.strftime("%d-%m-%Y"))
           total = (endTime - startTime) / 60
         else
           puts 'total'
@@ -74,7 +73,7 @@ class KidController < ApplicationController
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => "Session Data for " + @kid.name)
       f.xAxis(:categories => period_keys)
-      f.series(:name => "minutes", :yAxis => 0, :data => period_data)
+      f.series(:name => "hours", :yAxis => 0, :data => period_data.collect{|d| (d / 60).round(2) })
 
       f.yAxis [
         {:title => {:text => "Sesstion Time in Minutes", :margin => 70} },
@@ -89,6 +88,8 @@ class KidController < ApplicationController
 
     puts @session_data
     gon.session = @session_data
+
+
 
   end
 
