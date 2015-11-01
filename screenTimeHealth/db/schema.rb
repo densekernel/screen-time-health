@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031190138) do
+ActiveRecord::Schema.define(version: 20151101023121) do
 
   create_table "families", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20151031190138) do
     t.integer  "family_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "threshold"
   end
 
   add_index "kids", ["family_id"], name: "index_kids_on_family_id"
