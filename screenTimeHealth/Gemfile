@@ -50,6 +50,12 @@ gem 'erd'
 # Use nested forms
 gem 'nested_form'
 
+gem 'chart-js-rails'
+
+gem 'momentjs-rails'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

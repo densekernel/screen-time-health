@@ -23,3 +23,5 @@
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
+//= require moment
+//= require Chart

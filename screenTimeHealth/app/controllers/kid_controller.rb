@@ -53,18 +53,18 @@ class KidController < ApplicationController
       end
     end
 
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(:text => "Session Data for " + @kid.name)
-      f.xAxis(:categories => @period_keys.values)
-      f.series(:name => "minutes", :yAxis => 0, :data => @period_data.values)
+    # @chart = LazyHighCharts::HighChart.new('graph') do |f|
+    #   f.title(:text => "Session Data for " + @kid.name)
+    #   f.xAxis(:categories => @period_keys.values)
+    #   f.series(:name => "minutes", :yAxis => 0, :data => @period_data.values)
 
-      f.yAxis [
-        {:title => {:text => "Sesstion Time in Minutes", :margin => 70} },
-      ]
+    #   f.yAxis [
+    #     {:title => {:text => "Sesstion Time in Minutes", :margin => 70} },
+    #   ]
 
-      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
-      f.chart({:defaultSeriesType=>"column"})
-    end
+    #   f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+    #   f.chart({:defaultSeriesType=>"column"})
+    # end
     end
     
 
