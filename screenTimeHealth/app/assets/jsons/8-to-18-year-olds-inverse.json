@@ -1,0 +1,32 @@
+{
+   "Heavy Users":{
+      "Good grades (As and Bs)":"51%",
+      "Fair/poor grades (Cs or below)":"47%",
+      "Have a lot of friends":"93%",
+      "Get along well with their parents":"84%",
+      "Have been happy at school this year":"72%",
+      "Are often bored":"60%",
+      "Get into trouble a lot":"33%",
+      "Are often sad or unhappy":"32%"
+   },
+   "Moderate Users":{
+      "Good grades (As and Bs)":"65%",
+      "Fair/poor grades (Cs or below)":"31%",
+      "Have a lot of friends":"91%",
+      "Get along well with their parents":"90%",
+      "Have been happy at school this year":"81%",
+      "Are often bored":"53%",
+      "Get into trouble a lot":"21%",
+      "Are often sad or unhappy":"23%"
+   },
+   "Light Users":{
+      "Good grades (As and Bs)":"66%",
+      "Fair/poor grades (Cs or below)":"23%",
+      "Have a lot of friends":"91%",
+      "Get along well with their parents":"90%",
+      "Have been happy at school this year":"82%",
+      "Are often bored":"48%",
+      "Get into trouble a lot":"16%",
+      "Are often sad or unhappy":"22%"
+   }
+}
