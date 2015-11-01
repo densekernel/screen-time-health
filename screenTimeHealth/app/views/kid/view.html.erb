@@ -1,11 +1,71 @@
-<section>
-  <h1><%= @kid.name %></h1>
-  <p><%= @kid.unique_token %></p>
-</section>
-<section>
-  <h2>Sessions</h2>
-  <% for @session in @kid.session %>
-    <p>Start: <%= @session.startTime %></p>
-    <p>End : <%= @session.endTime %></p>
-  <% end %>
-</section>
+<div class="container">
+  <div class ="row">
+    <h3>
+      Session Time Data for <%= @kid.name %>
+    </h3>
+
+    <script type="text/javascript">
+
+    var session_chartData = []
+
+      $('document').ready(function(){
+            console.log(gon.session)
+            
+
+            
+              for (var property in gon.session) {
+                if (gon.session.hasOwnProperty(property)) {
+                // console.log(property)
+                // console.log(gon.session[property])
+                var subData = []
+                subData.push(property)
+                $(gon.session[property]).each(function(index, val){
+                  subData.push(val)
+                })
+                // console.log("here")
+                // console.log(subData)
+                session_chartData.push(subData)
+                }
+              }
+      })
+
+        if ($("body").hasClass("kid view")) {
+      
+             
+
+              console.log(session_chartData)
+
+
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Mon', 20, 28, 38, 45],
+              ['Tue', 31, 38, 55, 66],
+              ['Wed', 50, 55, 77, 80],
+              ['Thu', 77, 77, 66, 50],
+              ['Fri', 68, 66, 22, 15]
+              // Treat first row as data as well.
+            ], true);
+
+            var options = {
+              legend:'none'
+            };
+
+            var chart = new google.visualization.CandlestickChart(document.getElementById('session_chart'));
+
+            chart.draw(data, options);
+          }
+    };
+   
+    </script>
+ <div id="session_chart" style="width: 900px; height: 500px;"></div>
+</div>
+<div class="row">
+    <h3>
+      Session Time Data for <%= @kid.name %>
+    </h3>
+</div>
+</div>
+
