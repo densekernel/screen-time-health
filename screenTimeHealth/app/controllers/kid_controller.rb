@@ -18,14 +18,18 @@ class KidController < ApplicationController
 
     @sessions.each_with_index do |session, index|
 
-      starttime = session.starttime
-      endtime = session.endtime
+      startTime = session.startTime
+      endTime = session.endTime
+      if session.endTime.nil?
+        endTime = Time.now
+      end
    
       if index == 0
 
-        period_keys.push(starttime.strftime("%d-%m-%Y"))
-        total += (endtime - starttime) / 60
-        prevendtime = session.endtime
+        period_keys.push(startTime.strftime("%d-%m-%Y"))
+      
+        total += (endTime - startTime) / 60
+        prevEndTime = session.endTime.nil? ? Time.now : session.endTime
 
       else
 
@@ -60,9 +64,9 @@ class KidController < ApplicationController
         key = current_date 
         session_arr = []
       else
-        starttime = session.starttime
-        endtime = session.endtime
-        session_duration_mins = (endtime - starttime) / 60
+        startTime = session.startTime
+        endTime = session.endTime.nil? ? Time.now : session.endTime
+        session_duration_mins = (endTime - startTime) / 60
         session_arr.push(session_duration_mins)
         puts 'hereeee'
         puts session_arr
@@ -129,8 +133,8 @@ require 'json'
     puts @session_data
     gon.session = @session_data
     gon.avg = @avg_hours
-    end
 
+       end
   end
 
   def add
