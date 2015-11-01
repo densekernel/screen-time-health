@@ -9,30 +9,47 @@ class KidController < ApplicationController
     key = current_date 
     # key = @kid.session.first.startTime.strftime("%A") + " " + @kid.session.first.startTime.strftime("%A")
     session_arr = []
-    prevEndTime  = 0
+    prevEndTime  = @kid.session.first.endTime
     period_data = []
     period_keys = []
     total = 0
 
-    @kid.session.each_with_index do |session, index|
-   
+    @sessions = @kid.session.order(:startTime)
+
+    @sessions.each_with_index do |session, index|
+
       startTime = session.startTime
       endTime = session.endTime
+   
+      if index == 0
 
-      if index > 0
+        period_keys.push(startTime.to_time)
+        total += (endTime - startTime) / 60
+        prevEndTime = session.endTime
+
+      else
+
+        # save period
+
+        puts 'diff'
+        puts startTime
+        puts prevEndTime
+        puts startTime - prevEndTime
+
         if ((startTime - prevEndTime) > (5 * 60))
+          puts 'new stamp'
+          period_data.push(total)
+          
+          period_keys.push(startTime.to_time)
+          total = (endTime - startTime) / 60
+        else
+          puts 'total'
           total += (endTime - startTime) / 60
-        end  
+        end 
+
+        prevEndTime = session.endTime
+
       end
-      
-
-      period_keys.push(startTime.to_time)
-      period_data.push(total)
-
-      total = 0
-      prevEndTime = session.endTime
-
-
 
       if(session.startTime.strftime("%d-%m-%Y") != current_date)
         @session_data[key] = session_arr
@@ -53,18 +70,20 @@ class KidController < ApplicationController
       end
     end
 
-    # @chart = LazyHighCharts::HighChart.new('graph') do |f|
-    #   f.title(:text => "Session Data for " + @kid.name)
-    #   f.xAxis(:categories => @period_keys.values)
-    #   f.series(:name => "minutes", :yAxis => 0, :data => @period_data.values)
 
-    #   f.yAxis [
-    #     {:title => {:text => "Sesstion Time in Minutes", :margin => 70} },
-    #   ]
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(:text => "Session Data for " + @kid.name)
+      f.xAxis(:categories => period_keys)
+      f.series(:name => "minutes", :yAxis => 0, :data => period_data)
 
-    #   f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
-    #   f.chart({:defaultSeriesType=>"column"})
-    # end
+      f.yAxis [
+        {:title => {:text => "Sesstion Time in Minutes", :margin => 70} },
+      ]
+
+      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+      f.chart({:defaultSeriesType=>"column"})
+    end
+
     end
     
 

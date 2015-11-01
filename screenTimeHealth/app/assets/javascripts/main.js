@@ -235,12 +235,10 @@ var loadFunc = function() {
 
       });
 
+    Vis.drawHeavy();
+    Vis.drawModerate();
+    Vis.drawLight();
 
-Vis.drawHeavy();
-Vis.drawModerate();
-Vis.drawLight();
-
- 
     };
     
 };
