@@ -36,7 +36,7 @@ var loadFunc = function() {
 
     $(".rotate-loading-icon-wrapper").css('padding-top', (($(window).height()-156)/2)+'px');
 
-    $(".dial").knob();
+    $(".dial").knob({'readOnly': true, 'fgColor' : '#4BAE4F'});
 
     if ($("body").hasClass("kid view")) {
       $(window).load(function() {

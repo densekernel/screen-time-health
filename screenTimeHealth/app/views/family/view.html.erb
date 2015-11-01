@@ -18,7 +18,6 @@
               </div>
               <div class="panel-body">
                 <div class="text-center">
-                  <%= @last_kid_session[kid.id] %>
                   <input type="text" value="<%= @last_kid_session[kid.id] > kid.threshold ? kid.threshold : @last_kid_session[kid.id] %>" data-max="<%= kid.threshold %>" class="dial">
                 </div>
               </div>
@@ -28,17 +27,45 @@
     <% end %>
   </div>
   <div class="row">
-  	<div class="col-md-3">
-  		<%= high_chart("session_chart1", @chart[0]) %>
+  	<div class="col-md-12">
+  		<div class="panel">
+        <div class="panel-heading">
+          Obesity distribution
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart1", @chart[0]) %>
+        </div>
+      </div>
   	</div>
-  	<div class="col-md-3">
-  		<%= high_chart("session_chart2", @chart[1]) %>
+  	<div class="col-md-12">
+  		<div class="panel">
+        <div class="panel-heading">
+          Obesity distribution
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart2", @chart[1]) %>
+        </div>
+      </div>
   	</div>
-  	<div class="col-md-3">
-  		<%= high_chart("session_chart3", @chart[2]) %>
+  	<div class="col-md-12">
+  		<div class="panel">
+        <div class="panel-heading">
+          Obesity distribution
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart3", @chart[2]) %>
+        </div>
+      </div>
   	</div>
-  	<div class="col-md-3">
-  		<%= high_chart("session_chart4", @chart[3]) %>
+  	<div class="col-md-12">
+  		<div class="panel">
+        <div class="panel-heading">
+          Obesity distribution
+        </div>
+        <div class="panel-body">
+          <%= high_chart("session_chart4", @chart[3]) %>
+        </div>
+      </div>
   	</div>
   </div>
   
