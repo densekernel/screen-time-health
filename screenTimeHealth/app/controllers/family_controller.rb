@@ -12,7 +12,7 @@ class FamilyController < ApplicationController
         total += ((s.endTime - s.startTime) / 60)
       end
 
-      @last_kid_session[k.id] = total.to_i
+      @last_kid_session[k.id] = total.round(2) / 60
       
     end
 

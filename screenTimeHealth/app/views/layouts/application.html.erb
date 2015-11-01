@@ -14,13 +14,15 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'layouts/navbar' %>
-    <div class="container">
+    <div style="background:#009688;">
+      <div class="container">
       <% if notice %>
         <div class="alert alert-info"><%= notice %></div>
       <% end %>
       <% if alert %>
         <div class="alert alert-warning"><%= alert %></div>
       <% end %>
+    </div>
     </div>
     <div class="container">
       <%= yield %>

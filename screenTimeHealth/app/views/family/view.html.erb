@@ -18,7 +18,7 @@
               </div>
               <div class="panel-body">
                 <div class="text-center">
-                  <input type="text" value="<%= @last_kid_session[kid.id] > kid.threshold ? kid.threshold : @last_kid_session[kid.id] %>" data-max="<%= kid.threshold %>" class="dial">
+                  <input type="text" value="<%= @last_kid_session[kid.id] > kid.threshold / 60 ? kid.threshold / 60 : @last_kid_session[kid.id] %>" data-max="<%= kid.threshold / 60 %>" class="dial">
                 </div>
               </div>
           </div>
