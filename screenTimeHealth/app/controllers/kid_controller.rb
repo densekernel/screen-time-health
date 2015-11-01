@@ -18,18 +18,18 @@ class KidController < ApplicationController
 
     @sessions.each_with_index do |session, index|
 
-      startTime = session.startTime
-      endTime = session.endTime
-      if session.endTime.nil?
-        endTime = Time.now
+      starttime = session.starttime
+      endtime = session.endtime
+      if session.endtime.nil?
+        endtime = Time.now
       end
    
       if index == 0
 
-        period_keys.push(startTime.strftime("%d-%m-%Y"))
+        period_keys.push(starttime.strftime("%d-%m-%Y"))
       
-        total += (endTime - startTime) / 60
-        prevEndTime = session.endTime.nil? ? Time.now : session.endTime
+        total += (endtime - starttime) / 60
+        prevendtime = session.endtime.nil? ? Time.now : session.endtime
 
       else
 
@@ -64,9 +64,9 @@ class KidController < ApplicationController
         key = current_date 
         session_arr = []
       else
-        startTime = session.startTime
-        endTime = session.endTime.nil? ? Time.now : session.endTime
-        session_duration_mins = (endTime - startTime) / 60
+        starttime = session.starttime
+        endtime = session.endtime.nil? ? Time.now : session.endtime
+        session_duration_mins = (endtime - starttime) / 60
         session_arr.push(session_duration_mins)
         puts 'hereeee'
         puts session_arr

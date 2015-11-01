@@ -1,14 +1,25 @@
 class AnalyticsController < ApplicationController
   def start
     @kid = Kid.find_by(:unique_token => params[:unique_token].to_s)
-    Session.create(:starttime => Time.now, :kid_id => @kid.id)
+
+    tracking = false
+
+    @kid.sessions.each do |s| 
+      if s.endtime.nil?
+        tracking = true
+      end
+    end
+
+    if tracking = false
+      Session.create(:starttime => Time.now, :kid_id => @kid.id)
+    end
   end
 
   def end
     @kid = Kid.find_by(:unique_token => params[:unique_token].to_s)
-    @session = @kid.session.last.update(:endTime => Time.now)
-    startTime = @kid.session.startTime
-    difference = (endTime - startTime) / 60
+    @session = @kid.session.last.update(:endtime => Time.now)
+    starttime = @kid.session.starttime
+    difference = (endtime - starttime) / 60
 
     puts 'difference'
     puts difference

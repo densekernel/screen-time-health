@@ -23,7 +23,7 @@ def rand_in_range(from, to)
 end
 
 family_list = [
-  ["Addams", "raluca.cocioban@gmail.com", "$2a$10$vVwcMGiTisbzM1LzQaqfPu6a/eGgrSYTrlNa7dfqIjbrNd6wMGqNe", "$2a$10$vVwcMGiTisbzM1LzQaqfPu6a/eGgrSYTrlNa7dfqIjbrNd6wMGqNe"]
+  ["Addams", "test@test.com", "$2a$10$vVwcMGiTisbzM1LzQaqfPu6a/eGgrSYTrlNa7dfqIjbrNd6wMGqNe", "$2a$10$vVwcMGiTisbzM1LzQaqfPu6a/eGgrSYTrlNa7dfqIjbrNd6wMGqNe"]
 ]
 
 family_list.each do |family|

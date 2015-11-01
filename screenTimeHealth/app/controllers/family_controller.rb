@@ -7,11 +7,11 @@ class FamilyController < ApplicationController
 
     @kids.each do |k|
       if(k.session.count != 0)
-      sessions = k.session.where("DATE(startTime) = ?", Date.today)
+      sessions = k.session.where("DATE(starttime) = ?", Date.today)
       total = 0
       sessions.each do |s|
-        if session.endTime.nil?
-        total += ((s.endTime - s.startTime) / 60)
+        if session.endtime.nil?
+        total += ((s.endtime - s.starttime) / 60)
       end
       end
 
