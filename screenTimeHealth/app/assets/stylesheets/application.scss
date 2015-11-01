@@ -21,6 +21,70 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$bgDefault      : #4caf50;
+$bgHighlight    : #388e3c;
+$colDefault     : #ecf0f1;
+$colHighlight   : #fefdff;
+$dropDown       : true;
+.navbar-default {
+  background-color: $bgDefault!important;
+  border-color: $bgHighlight!important;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus { 
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight; }}
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li > a {
+            color: $colDefault;
+            &:hover,  &:focus {
+              color: $colHighlight;
+              background-color: $bgHighlight; }}
+          .divider {
+            background-color: $bgHighlight;}}}
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}
+
 .rotate-loading-icon {
     animation-name: spin;
     animation-duration: 4000ms;
