@@ -33,14 +33,14 @@ end
 
 
 kid_list = [
-  [ "Gomez" ],
-  [ "Pugsley" ],
-  [ "Grandma Frump" ],
-  [ "Wednesday" ]
+  [ "Gomez", 300 ],
+  [ "Pugsley", 250 ],
+  [ "Grandma Frump", 150 ],
+  [ "Wednesday", 220 ]
 ]
 
 kid_list.each do |kid|
-  Kid.create( :name => kid[0], :family_id => 1)
+  Kid.create( :name => kid[0], :threshold => kid[1] ,:family_id => 1)
 end
 
 (1..100).each do |n|

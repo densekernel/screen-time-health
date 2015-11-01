@@ -9,15 +9,18 @@
     <h3> Number of kids: <%= @kids.count %> </h3>
   </div>
   <div class="row">
-    <% @kids.each do |kid| %>
+    <% @kids.each do |kid, index| %>
       <div class="col-md-4">
         <a href="/kid/view?id=<%= kid.id %>" type="button"> 
           <div class="panel">
               <div class="panel-heading">
-                  <h3 class="panel-title"><%= kid.name%></h3>
+                  <h3 class="panel-title"><%= kid.name %></h3>
               </div>
               <div class="panel-body">
-                  <div id="piechart" style="width: 900px; height: 500px;"></div>
+                <div class="text-center">
+                  <%= @last_kid_session[kid.id] %>
+                  <input type="text" value="<%= @last_kid_session[kid.id] > kid.threshold ? kid.threshold : @last_kid_session[kid.id] %>" data-max="<%= kid.threshold %>" class="dial">
+                </div>
               </div>
           </div>
         </a>
