@@ -47,8 +47,8 @@ end
   startIndex = (n * 24) + 8
   endIndex = (n * 24) + 7
   endEndIndex = (n * 24) + 2
-  startTime = rand_time(startIndex.hours.ago, endIndex.hours.ago)
-  endTime = rand_time(endIndex.hours.ago, endEndIndex.hours.ago)
+  starttime = rand_time(startIndex.hours.ago, endIndex.hours.ago)
+  endtime = rand_time(endIndex.hours.ago, endEndIndex.hours.ago)
   familyMember = rand_int(1, 5)
-  Session.create(:startTime => startTime, :endTime => endTime, :kid_id => familyMember)
+  Session.create(:starttime => starttime, :endtime => endtime, :kid_id => familyMember)
 end

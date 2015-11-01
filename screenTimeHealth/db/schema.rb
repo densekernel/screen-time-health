@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20151101023121) do
   add_index "kids", ["family_id"], name: "index_kids_on_family_id"
 
   create_table "sessions", force: :cascade do |t|
-    t.datetime "startTime"
-    t.datetime "endTime"
+    t.datetime "starttime"
+    t.datetime "endtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "kid_id"

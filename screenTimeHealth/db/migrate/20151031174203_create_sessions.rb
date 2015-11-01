@@ -1,9 +1,9 @@
 class CreateSessions < ActiveRecord::Migration
   def change
     create_table :sessions do |t|
-      t.datetime :startTime
-      t.datetime :endTime
-      t.references :kid, index: true
+      t.datetime :starttime
+      t.datetime :endtime
+      t.references :kids, index: true
 
       t.timestamps null: false
     end

@@ -5,64 +5,64 @@ class KidController < ApplicationController
     if(@kid.session.count != 0)
       @session_data = {}
 
-    current_date = @kid.session.first.startTime.strftime("%d-%m-%Y")
+    current_date = @kid.session.first.starttime.strftime("%d-%m-%Y")
     key = current_date 
-    # key = @kid.session.first.startTime.strftime("%A") + " " + @kid.session.first.startTime.strftime("%A")
+    # key = @kid.session.first.starttime.strftime("%A") + " " + @kid.session.first.starttime.strftime("%A")
     session_arr = []
-    prevEndTime  = @kid.session.first.endTime
+    prevendtime  = @kid.session.first.endtime
     period_data = []
     period_keys = []
     total = 0
 
-    @sessions = @kid.session.order(:startTime)
+    @sessions = @kid.session.order(:starttime)
 
     @sessions.each_with_index do |session, index|
 
-      startTime = session.startTime
-      endTime = session.endTime
+      starttime = session.starttime
+      endtime = session.endtime
    
       if index == 0
 
-        period_keys.push(startTime.strftime("%d-%m-%Y"))
-        total += (endTime - startTime) / 60
-        prevEndTime = session.endTime
+        period_keys.push(starttime.strftime("%d-%m-%Y"))
+        total += (endtime - starttime) / 60
+        prevendtime = session.endtime
 
       else
 
         # save period
         puts 'diff'
-        puts startTime
-        puts prevEndTime
-        puts startTime - prevEndTime
+        puts starttime
+        puts prevendtime
+        puts starttime - prevendtime
 
-        if ((startTime - prevEndTime) > (5 * 60))
+        if ((starttime - prevendtime) > (5 * 60))
           puts 'new stamp'
           period_data.push(total)
           
-          period_keys.push(startTime.strftime("%d-%m-%Y"))
-          total = (endTime - startTime) / 60
+          period_keys.push(starttime.strftime("%d-%m-%Y"))
+          total = (endtime - starttime) / 60
         else
           puts 'total'
-          total += (endTime - startTime) / 60
+          total += (endtime - starttime) / 60
         end 
 
-        prevEndTime = session.endTime
+        prevendtime = session.endtime
 
       end
 
-      if(session.startTime.strftime("%d-%m-%Y") != current_date)
+      if(session.starttime.strftime("%d-%m-%Y") != current_date)
         @session_data[key] = session_arr
         puts 'after pushed to map'
         puts @session_data[key]
 
-        current_date = session.startTime.strftime("%d-%m-%Y")
-        # key = current_date + " " + session.startTime.strftime("%A")
+        current_date = session.starttime.strftime("%d-%m-%Y")
+        # key = current_date + " " + session.starttime.strftime("%A")
         key = current_date 
         session_arr = []
       else
-        startTime = session.startTime
-        endTime = session.endTime
-        session_duration_mins = (endTime - startTime) / 60
+        starttime = session.starttime
+        endtime = session.endtime
+        session_duration_mins = (endtime - starttime) / 60
         session_arr.push(session_duration_mins)
         puts 'hereeee'
         puts session_arr
